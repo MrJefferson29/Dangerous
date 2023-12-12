@@ -2,6 +2,9 @@ const express = require("express")
 const dotenv = require("dotenv")
 const cors = require("cors")
 const path = require("path")
+const mongoose = require("mongoose")
+
+mongoose.set('strictQuery', false);
 
 const IndexRoute = require("./Routers/index")
 const connectDatabase = require("./Helpers/database/connectDatabase")
@@ -9,14 +12,16 @@ const customErrorHandler = require("./Middlewares/Errors/customErrorHandler")
 
 dotenv.config({
     path:  './.env'
-})
+});
 
-connectDatabase()
+
+connectDatabase();
+
 
 const app = express() ;
 
 app.use(express.json())
-app.use(cors())
+app.use(cors());
 
 app.use("/",IndexRoute)
 
@@ -30,10 +35,10 @@ const server = app.listen(PORT,()=>{
 
     console.log(`Server running on port  ${PORT} : ${process.env.NODE_ENV}`)
 
-})
+});
 
 process.on("unhandledRejection",(err , promise) =>{
     console.log(`Logged Error : ${err}`)
 
     server.close(()=>process.exit(1))
-})
+});(()=>process.exit(1))
