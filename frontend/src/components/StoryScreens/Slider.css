@@ -1,0 +1,22 @@
+.slider-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  .slider {
+      border-radius: 20px;
+  }
+  .slider::-webkit-slider-thumb {
+    width: 40px; /* Increase width of the marker */
+    height: 40px; /* Increase height of the marker */
+    border: none; /* Hide the default border */
+    border-radius: 50%; /* Make it a circle */
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.63 0-3-1.32-3-3s1.37-3 3-3 3 1.32 3 3-1.37 3-3 3z'/%3E%3C/svg%3E")
+      no-repeat center; /* Replace this URL with your Font Awesome truck icon */
+    cursor:grabbing;
+    margin-top: -40px; /* Adjust the negative margin to move it slightly above the slider */
+  }
+  

@@ -1,0 +1,47 @@
+.terms-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .effective-date {
+    font-size: 14px;
+    text-align: right;
+    margin-bottom: 20px;
+    color: #777;
+  }
+  
+  ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+  }
+  
+  li {
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  b {
+    font-weight: bold;
+  }
+  
+  /* Add any additional styling as needed */
+  

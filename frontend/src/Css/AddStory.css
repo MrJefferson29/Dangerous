@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@700&display=swap');
+.Inclusive-addStory-page {
+    width: auto;
+    margin: 1.2rem auto;
+}
+.inp {
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 7px;
+    border-radius: 4px;
+    border: 1px solid #aaa;
+}
+@media only screen and (max-width: 1001px) {
+    .Inclusive-addStory-page {
+        width: 100%;
+    }
+}
+
+.Inclusive-addStory-page .addStory-form {
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.StoryImageField {
+    border: rgb(235, 235, 235) solid 1px;
+    width: 100%;
+    height: 240px;
+    border-radius: 3px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    margin-top: 1rem;
+    position: relative;
+}
+
+.StoryImageField svg {
+    font-size: 1.4rem;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.StoryImageField .txt {
+    width: 350px;
+    height: auto;
+    margin-top: 14px;
+    text-align: center;
+    color: rgba(0, 0, 0, 0.7);
+}
+
+.StoryImageField [type="file"] {
+    width: 100%;
+    height: 200px;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.addStory-btn {
+    width: 100%;
+    background-color: #0063a5;
+    padding: 0.7rem;
+    color: white;
+    margin-top: 1.9rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+}
+
+.dis-btn {
+    width: 100%;
+    background-color: #0063a5;
+    padding: 0.7rem;
+    color: white;
+    margin-top: 1.9rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    opacity: 0.4;
+}
+
+.addStory-form .error_msg {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background-color: rgba(245, 72, 72, 0.9);
+    color: white;
+    padding: 8px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.addStory-form .success_msg {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    background-color: rgba(14, 218, 75, 0.9);
+    color: white;
+    padding: 8px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.addStory-form .success_msg a {
+    color: black;
+    font-weight: bold;
+    padding-left: 1rem;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 10px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+  }
+  
+  .slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #4caf50;
+    cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #4caf50;
+    cursor: pointer;
+  }
