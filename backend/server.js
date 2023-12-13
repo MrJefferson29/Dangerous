@@ -21,7 +21,7 @@ connectDatabase();
 const app = express() ;
 
 const corsOptions = {
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:3000/addstory',
     credentials: true,
   };
 
