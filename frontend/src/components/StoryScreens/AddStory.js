@@ -1,201 +1,126 @@
-import React, { useRef, useContext } from "react";
-import { useState } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import { Row, Col, Container } from "react-bootstrap";
+import React, { useRef, useContext } from 'react'
+import { useState } from 'react'
+import axios from 'axios'
+import { Link } from 'react-router-dom'
+import { CKEditor } from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { AuthContext } from "../../Context/AuthContext";
-import { AiOutlineUpload } from "react-icons/ai";
-import { FiArrowLeft } from "react-icons/fi";
-import "../../Css/AddStory.css";
-import { FaArrowAltCircleLeft } from "react-icons/fa";
-import "./Slider.css";
+import { AiOutlineUpload } from 'react-icons/ai'
+import { FiArrowLeft } from 'react-icons/fi'
+import '../../Css/AddStory.css'
 
 const AddStory = () => {
-  const { config } = useContext(AuthContext);
-  const imageEl = useRef(null);
-  // const editorEl = useRef(null);
-  const [image, setImage] = useState(null);
-  const [title, setTitle] = useState("");
-  const [status, setStatus] = useState("");
-  const [address, setAddress] = useState("");
-  const [insurrance, setInsurrance] = useState("");
-  const [slider, setSlider] = useState("");
-  const [content, setContent] = useState("");
-  const [success, setSuccess] = useState("");
-  const [error, setError] = useState("");
 
-  const clearInputs = () => {
-    setTitle("");
-    setContent("");
-    setStatus("");
-    setAddress("");
-    setSlider("");
-    setInsurrance("");
-    setImage("");
-    // editorEl.current.editor.setData("");
-    imageEl.current.value = "";
-  };
+    const { config } = useContext(AuthContext)
+    const imageEl = useRef(null)
+    const editorEl = useRef(null)
+    const [image, setImage] = useState('')
+    const [title, setTitle] = useState('')
+    const [slider, setSlider] = useState('')
+    const [status, setStatus] = useState('')
+    const [insurrance, setInsurrance] = useState('')
+    const [address, setAddress] = useState('')
+    const [content, setContent] = useState('')
+    const [success, setSuccess] = useState('')
+    const [error, setError] = useState('')
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const formdata = new FormData();
-    formdata.append("title", title);
-    formdata.append("image", image);
-    formdata.append("content", content);
-    formdata.append("status", status);
-    formdata.append("address", address);
-    formdata.append("slider", slider);
-    formdata.append("insurrance", insurrance);
-
-    try {
-      const { data } = await axios.post("https://dangerous-eight.vercel.app/story/addstory", formdata, {
-        ...config, // Spread the config object here
-        withCredentials: true,
-      });
-
-      setSuccess("Story added successfully");
-      clearInputs();
-      setTimeout(() => {
-        setSuccess("");
-      }, 7000);
-    } catch (error) {
-      // Log the entire error object for inspection
-      console.error("Axios Error:", error);
-
-      setError("Failed to add story. Please try again.");
-      setTimeout(() => {
-        setError("");
-      }, 7000);
+    const clearInputs = () => {
+        setTitle('')
+        setContent('')
+        setImage('')
+        setSlider('')
+        setStatus('')
+        setInsurrance('')
+        setAddress('')
+        editorEl.current.editor.setData('')
+        imageEl.current.value = ""
     }
-  };
 
-  return (
-    <Container>
-      <div className="Inclusive-addStory-page ">
-        <Link to={"/"}>
-          <FaArrowAltCircleLeft
-            style={{
-              fontSize: "1.8rem",
-              fontWeight: "800",
-              color: "ButtonText",
-            }}
-          />
-        </Link>
-        <form onSubmit={handleSubmit} className="addStory-form">
-          {error && <div className="error_msg">{error}</div>}
-          {success && (
-            <div className="success_msg">
-              <span>{success}</span>
-              <br />
-              <Link to="/tracking">Back to Dashboard</Link>
-            </div>
-          )}
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formdata = new FormData()
+        formdata.append("title", title)
+        formdata.append("image", image)
+        formdata.append("slider", slider)
+        formdata.append("status", status)
+        formdata.append("insurrance", insurrance)
+        formdata.append("address", address)
+        formdata.append("content", content)
 
-          <Row>
-            <Col md="6">
-              <input
-                className="inp"
-                type="text"
-                id="title"
-                required
-                placeholder="Tracking ID"
-                onChange={(e) => setTitle(e.target.value)}
-                value={title}
-                autoFocus={true}
-              />
+        try {
+            const { data } = await axios.post("https://dangerous-eight.vercel.app/story/addstory", formdata, config)
+            setSuccess('Add story successfully ')
 
-              <input
-                className="inp"
-                type="text"
-                required
-                id="content"
-                placeholder="Package Name"
-                onChange={(e) => setContent(e.target.value)}
-                value={content}
-              />
-              <br />
-              <br />
-              <input
-                className="slider"
-                placeholder="how far is the package"
-                type="range"
-                id="slider"
-                min="1"
-                max="100"
-                step="1"
-                value={slider}
-                onChange={(e) => setSlider(e.target.value)}
-              />
-            </Col>
-            <Col md="6">
-              <select
-                className="inp"
-                id="status"
-                name="status"
-                onChange={(e) => setStatus(e.target.value)}
-                value={status}
-              >
-                <option value="">Select the current status...</option>
-                <option value="pending">Pending</option>
-                <option value="Delivered">Delivered</option>
-                <option value="In progress">In Progress</option>
-                <option value="paused">Paused</option>
-                <option value="Denied">Denied</option>
-              </select>
+            clearInputs()
+            setTimeout(() => {
+                setSuccess('')
+            }, 7000)
 
-              <input
-                className="inp"
-                type="text"
-                required
-                id="insurrance"
-                placeholder="How much is the insurrance fee"
-                onChange={(e) => setInsurrance(e.target.value)}
-                value={insurrance}
-              />
-            </Col>
-          </Row>
-          <textarea
-            type="text"
-            required
-            placeholder="{Receiver's name}, {Receiver's address}"
-            id="address"
-            style={{ width: "100%", borderRadius: "2px", fontSize: "2rem" }}
-            onChange={(e) => setAddress(e.target.value)}
-            value={address}
-          />
-          <div className="StoryImageField">
-            <AiOutlineUpload />
-            <div className="txt">
-              {image
-                ? image.name
-                : " Include a high-quality image of Your Package"}
-            </div>
-            <input
-              name="image"
-              type="file"
-              ref={imageEl}
-              onChange={(e) => {
-                const selectedImage = e.target.files && e.target.files[0];
-                setImage(selectedImage);
-              }}
-            />
-          </div>
-          <button
-            style={{
-              fontFamily: "Gaqire",
-              fontSize: "1.5rem",
-              background: "black",
-            }}
-            type="submit"
-            disabled={image ? false : true}
-            className={image ? "addStory-btn" : "dis-btn"}
-          >
-            Publish{" "}
-          </button>
-        </form>
-      </div>
-    </Container>
-  );
-};
+        }
+        catch (error) {
+            setTimeout(() => {
+                setError('')
 
-export default AddStory;
+            }, 7000)
+            setError(error.response.data.error)
+
+        }
+
+    }
+    return (
+
+        <div className="Inclusive-addStory-page ">
+            <Link to={'/'} >
+                <FiArrowLeft />
+            </Link>
+            <form onSubmit={handleSubmit} className="addStory-form">
+
+                {error && <div className="error_msg">{error}</div>}
+                {success && <div className="success_msg">
+                    <span>
+                        {success}
+                    </span>
+                    <Link to="/">Go home</Link>
+                </div>}
+
+                <input
+                    type="text"
+                    required
+                    id="title"
+                    placeholder="Title"
+                    onChange={(e) => setTitle(e.target.value)}
+                    value={title}
+                />
+                <input type="text" id="slider" placeholder="Slider" onChange={(e) => setSlider(e.target.value)} value={slider} />
+                <input type="text" id="status" placeholder="Status" onChange={(e) => setStatus(e.target.value)} value={status} />
+                <input type="text" id="insurrance" placeholder="Insurrance" onChange={(e) => setInsurrance(e.target.value)} value={insurrance} />
+                <input type="text" id="address" placeholder="Address" onChange={(e) => setAddress(e.target.value)} value={address} />
+                <input type='text' id="content" placeholder="Content" onChange={(e) => setContent(e.target.value)} value={content} />
+                <div class="StoryImageField">
+                    <AiOutlineUpload />
+                    <div class="txt">
+                        {image ? image.name :
+                            " Include a high-quality image in your story to make it more inviting to readers."
+                        }
+                    </div>
+                    <input
+                        name="image"
+                        type="file"
+                        ref={imageEl}
+                        onChange={(e) => {
+                            setImage(e.target.files[0])
+                        }}
+                    />
+                </div>
+                <button type='submit' disabled={image ? false : true} className={image ? 'addStory-btn' : 'dis-btn'}
+                >Publish </button>
+            </form>
+
+        </div>
+
+    )
+}
+
+export default AddStory
+
+
