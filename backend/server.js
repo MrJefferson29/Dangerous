@@ -20,14 +20,8 @@ connectDatabase();
 
 const app = express() ;
 
-const corsOptions = {
-    origin: ['http://localhost:3000', 'https://dangerous-eight.vercel.app', 'http://localhost:3000/addstory'],
-    credentials: true,
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',,
-  };
-
 app.use(express.json())
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.use("/",IndexRoute)
 
