@@ -27,7 +27,7 @@ const EditProfile = () => {
         formdata.append("photo", photo)
 
         try {
-            const { data } = await axios.post("/user/editProfile", formdata, config)
+            const { data } = await axios.post("https://dangerous-eight.vercel.app/auth/forgotpassword/auth/login/user/editProfile", formdata, config)
 
             setSuccess('Edit Profile successfully ')
             setTimeout(() => {

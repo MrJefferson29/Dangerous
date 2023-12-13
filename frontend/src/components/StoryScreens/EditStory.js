@@ -32,7 +32,7 @@ const EditStory = () => {
       setLoading(true);
       try {
         const { data } = await axios.get(
-          `/story/editStory/${slug}`,
+          `https://dangerous-eight.vercel.app/story/editStory/${slug}`,
           config,
       { withCredentials: true }
 
@@ -68,7 +68,7 @@ const EditStory = () => {
 
     try {
       const { data } = await axios.put(
-        `/story/${slug}/edit`,
+        `https://dangerous-eight.vercel.app/story/${slug}/edit`,
         formdata,
         config,
       { withCredentials: true }

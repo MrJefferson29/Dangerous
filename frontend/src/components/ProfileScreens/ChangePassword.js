@@ -30,7 +30,7 @@ const ChangePassword = () => {
 
         try {
             const { data } = await axios.put(
-                "/user/changePassword",
+                "https://dangerous-eight.vercel.app/auth/forgotpassword/auth/login/user/changePassword",
                 {
                     newPassword,
                     oldPassword

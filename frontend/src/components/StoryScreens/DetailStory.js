@@ -38,7 +38,7 @@ const DetailStory = () => {
       setLoading(true);
       var activeUser = {};
       try {
-        const { data } = await axios.get("/auth/private", {
+        const { data } = await axios.get("https://dangerous-eight.vercel.app/auth/private", {
           headers: {
             "Content-Type": "application/json",
             authorization: `Bearer ${localStorage.getItem("authToken")}`,
@@ -52,7 +52,7 @@ const DetailStory = () => {
       }
 
       try {
-        const { data } = await axios.post(`/story/${slug}`, { activeUser });
+        const { data } = await axios.post(`https://dangerous-eight.vercel.app/story/${slug}`, { activeUser });
         setStory(data.data);
         setLikeStatus(data.likeStatus);
         setLikeCount(data.data.likeCount);
@@ -83,7 +83,7 @@ const DetailStory = () => {
 
     try {
       const { data } = await axios.post(
-        `/story/${slug}/like`,
+        `https://dangerous-eight.vercel.app/story/${slug}/like`,
         { activeUser },
         {
           headers: {
@@ -105,7 +105,7 @@ const DetailStory = () => {
   const handleDelete = async () => {
     if (window.confirm("Do you want to delete this post")) {
       try {
-        await axios.delete(`/story/${slug}/delete`, {
+        await axios.delete(`https://dangerous-eight.vercel.app/story/${slug}/delete`, {
           headers: {
             "Content-Type": "application/json",
             authorization: `Bearer ${localStorage.getItem("authToken")}`,
@@ -130,7 +130,7 @@ const DetailStory = () => {
   const addStoryToReadList = async () => {
     try {
       const { data } = await axios.post(
-        `/user/${slug}/addStoryToReadList`,
+        `https://dangerous-eight.vercel.app/user/${slug}/addStoryToReadList`,
         { activeUser },
         {
           headers: {
@@ -187,7 +187,7 @@ const DetailStory = () => {
                 <Col md="6" style={{ marginTop: "15px" }}>
                   <div className="story-banner-img">
                     <img
-                      src={`/storyImages/${story.image}`}
+                      src={`https://dangerous-eight.vercel.app/storyImages/${story.image}`}
                       alt={story.title}
                     />
                   </div>

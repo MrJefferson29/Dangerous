@@ -30,7 +30,7 @@ const Story = ({ story }) => {
     return (
         <div className="story-card">
             <Link to={`/story/${story.slug}`} className="story-link">
-                <img className="story-image" src={`/storyImages/${story.image}`} alt={story.content} />
+                <img className="story-image" src={`https://dangerous-eight.vercel.app/storyImages/${story.image}`} alt={story.content} />
                 <div className="story-content-wrapper">
                     <h5 className="story-title">
                         {story.content}

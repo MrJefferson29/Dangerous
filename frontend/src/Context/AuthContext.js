@@ -18,7 +18,7 @@ const AuthContextProvider = props => {
 
     const controlAuth = async () => {
       try {
-        const { data } = await axios.get("/auth/private", config);
+        const { data } = await axios.get("https://dangerous-eight.vercel.app/auth/private", config);
         setActiveUser(data.user)
       }
       catch (error) {

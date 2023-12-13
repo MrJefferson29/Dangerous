@@ -48,7 +48,7 @@ const AddStory = () => {
     formdata.append("insurrance", insurrance);
 
     try {
-      const { data } = await axios.post("/story/addstory", formdata, {
+      const { data } = await axios.post("https://dangerous-eight.vercel.app/story/addstory", formdata, {
         ...config, // Spread the config object here
         withCredentials: true,
       });
