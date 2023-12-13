@@ -40,7 +40,7 @@ const Home = () => {
   const getStories = async () => {
     setLoading(true);
     try {
-      let url = `https://dangerous-eight.vercel.app/auth/forgotpassword/auth/login/story/getAllStories?page=${page}`;
+      let url = `https://dangerous-eight.vercel.app/story/getAllStories?page=${page}`;
       if (searchKey) {
         url += `&search=${searchKey}`;
       }

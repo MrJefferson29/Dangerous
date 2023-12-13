@@ -24,7 +24,7 @@ const RegisterScreen = () => {
 
     try {
       const { data } = await axios.post(
-        "https://dangerous-eight.vercel.app/auth/forgotpassword/auth/login/auth/register",
+        "https://dangerous-eight.vercel.app/auth/register",
         {
           username,
           email,

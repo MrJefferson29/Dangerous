@@ -29,7 +29,7 @@ const Profile = () => {
             setLoading(true)
 
             try {
-                const { data } = await axios.get("https://dangerous-eight.vercel.app/auth/forgotpassword/auth/login/user/profile", config)
+                const { data } = await axios.get("https://dangerous-eight.vercel.app/user/profile", config)
 
                 setUser(data.data)
 

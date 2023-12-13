@@ -25,7 +25,7 @@ const ResetPasswordScreen = () => {
 
     try {
       const { data } = await axios.put(
-        `https://dangerous-eight.vercel.app/auth/forgotpassword/auth/login/auth/resetpassword?resetPasswordToken=${token}`,
+        `https://dangerous-eight.vercel.app/auth/resetpassword?resetPasswordToken=${token}`,
         {
           password,
         }

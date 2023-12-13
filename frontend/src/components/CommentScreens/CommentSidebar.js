@@ -17,7 +17,7 @@ const CommentSidebar = ({ slug, sidebarShowStatus, setSidebarShowStatus, activeU
 
   const getStoryComments = async () => {
     try {
-      const { data } = await axios.get(`https://dangerous-eight.vercel.app/auth/forgotpassword/auth/login/comment/${slug}/getAllComment`)
+      const { data } = await axios.get(`https://dangerous-eight.vercel.app/comment/${slug}/getAllComment`)
       setCommentList(data.data)
       setCount(data.count)
     }
