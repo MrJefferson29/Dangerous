@@ -21,7 +21,6 @@ const addStory = asyncErrorWrapper(async (req, res, next) => {
       insurrance,
       slider,
       address,
-      author: req.user._id,
       image: req.savedStoryImage,
       readtime,
     });
