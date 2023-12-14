@@ -7,7 +7,7 @@ const storage = multer.diskStorage({
         // const rootDir = path.dirname(require.main.filename);
 
         if (file.fieldname === "photo") {
-            cb(null,  "/public/userPhotos");
+            cb(null, "/public/userPhotos");
         } else {
             cb(null, "/public/storyImages");
         }
