@@ -22,5 +22,12 @@ router.delete("/:slug/delete",[getAccessToRoute,checkStoryExist,checkUserAndStor
 
 router.get("/getAllStories",getAllStories)
 
+router.use((err, req, res, next) => {
+    if (err instanceof CustomError) {
+        return res.status(err.statusCode).json({ success: false, error: err.message });
+    }
+    next(err);
+});
+
 
 module.exports = router
