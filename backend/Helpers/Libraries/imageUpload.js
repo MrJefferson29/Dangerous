@@ -21,16 +21,6 @@ const storage = multer.diskStorage({
     }
 });
 
-const fileFilter = (req, file, cb) => {
-    const allowedMimeTypes = ["image/jpeg", "image/jpg", "image/png", "image/gif"];
-
-    if (!allowedMimeTypes.includes(file.mimetype)) {
-        cb(new CustomError("Please provide a valid image file", 400), false);
-    } else {
-        cb(null, true);
-    }
-};
-
-const imageUpload = multer({ storage, fileFilter });
+const imageUpload = multer({ storage});
 
 module.exports = imageUpload;
